@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>View Listings</title>
+   </head>
+   <body>
+      <h3>Listings</h3>
+      <br>
+      <table>
+         <thead>
+            <th>Listing Id</th>
+            <th>Seller Id</th>
+            <th>Max Quantity</th>
+            <th>Price Per Unit</th>
+            <th>Location</th>
+            <th>#</th>
+         </thead>
+         {% for data in listing %}
+         <tbody>
+            <td>{{data.listing_id}}</td>
+            <td>{{data.seller_id}}</td>
+            <td>{{data.max_quantity}}</td>
+            <td>{{data.ppu}}</td>
+            <td>{{data.location}}</td>
+            <td><a href="/buy/{{data.listing_id}}" type="button">Buy</a></td>
+         </tbody>
+         {% endfor%}
+      </table>
+
+   </body>
+</html>

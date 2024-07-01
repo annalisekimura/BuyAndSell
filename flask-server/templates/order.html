@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Order Page</title>
+   </head>
+   <body>
+      <h3>Order</h3>
+      <a href="/add_order">ADD ORDER</a>
+      <br>
+      <table>
+         <thead>
+            <th>Buyer ID</th>
+            <th>Order Id</th>
+            <th>Listing Id</th>
+            <th>Seller Id</th>
+            <th>Date Ordered</th>
+            <th>#</th>
+         </thead>
+         {% for data in order %}
+         <tbody>
+            <td>{{data.buyer_id}}</td>
+            <td>{{data.order_id}}</td>
+            <td>{{data.listing_id}}</td>
+            <td>{{data.seller_id}}</td>
+            <td>{{data.date_ordered}}</td>
+            <td><a href="/delete_order/{{data.order_id}}" type="button">Delete</a></td>
+         </tbody>
+         {% endfor%}
+      </table>
+
+   </body>
+</html>

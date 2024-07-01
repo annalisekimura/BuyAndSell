@@ -1,0 +1,63 @@
+.buyer-page {
+    margin: 20px;
+  }
+  
+  .buyer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .buyer-table th, .buyer-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .buyer-table th {
+    background-color: rgb(16, 22, 27)
+  }
+  
+  .browse-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: rgb(15, 2, 2);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .browse-link:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-buyer-form {
+    margin-top: 20px;
+  }
+  
+  .add-buyer-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-buyer-form input[type="text"], .add-buyer-form input[type="email"], .add-buyer-form input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .add-buyer-form button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .add-buyer-form button:hover {
+    background-color: #218838;
+  }

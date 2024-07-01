@@ -1,0 +1,64 @@
+.sell-page {
+  margin: 20px;
+}
+
+.listings-table, .edit-listing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.listings-table th, .listings-table td, .edit-listing-table th, .edit-listing-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.listings-table th, .edit-listing-table th {
+  background-color: #f2f2f2;
+}
+
+.listings-table button, .edit-listing-table button {
+  background-color: #dc3545;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.listings-table button:hover, .edit-listing-table button:hover {
+  background-color: #c82333;
+}
+
+.sell-page form {
+  margin-top: 20px;
+}
+
+.sell-page form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sell-page form input[type="number"], .sell-page form input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.sell-page form button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sell-page form button[type="submit"]:hover {
+  background-color: #0056b3;
+}

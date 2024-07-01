@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Index Page</title>
+   </head>
+   <body>
+      <h3>Profiles</h3>
+      <a href="/add_data">BUYERS</a>
+      <br>
+      <table>
+         <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>#</th>
+         </thead>
+         {% for data in profiles %}
+         <tbody>
+            <td>{{data.id}}</td>
+            <td>{{data.first_name}}</td>
+            <td>{{data.last_name}}</td>
+            <td>{{data.age}}</td>
+            <td><a href="/shop/{{data.id}}" type="button">Shop</a></td>
+         </tbody>
+         {% endfor%}
+      </table>
+
+      <a href="/add_seller">SELLERS</a>
+      <br>
+      <table>
+         <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Sell Item</th>
+         </thead>
+         {% for data in seller %}
+         <tbody>
+            <td>{{data.id}}</td>
+            <td>{{data.first_name}}</td>
+            <td>{{data.last_name}}</td>
+            <td>{{data.age}}</td>
+            <td><a href="/sell/{{data.id}}" type="button">Sell</a></td>
+         </tbody>
+         {% endfor%}
+      </table>
+
+   </body>
+</html>
