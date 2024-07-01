@@ -58,3 +58,7 @@
   form button[type="submit"] {
     padding: 8px 16px;
   }
+
+  .orderHead th {
+    background-color: black;
+  }

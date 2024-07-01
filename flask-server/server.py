@@ -25,13 +25,13 @@ with app.app_context():
     db.engines['three'].execution_options(isolation_level='REPEATABLE READ')
     db.engines['four'].execution_options(isolation_level='REPEATABLE READ')
 
-# Settings for migrations
+# settings for migrations
 migrate = Migrate(app, db)
 
 
-# Models
+# models
 class Profile(db.Model):
-    # Id: Field which stores unique id for every row in database table
+    # id: Field which stores unique id for every row in database table
     # first_name: Used to store the first name of the user
     # last_name: Used to store last name of the user
     # Age: Used to store the age of the user
@@ -40,7 +40,6 @@ class Profile(db.Model):
     last_name = db.Column(db.String(20), unique=False, nullable=False)
     age = db.Column(db.Integer, nullable=False)
 
-    #repr method represents how one object of this datatable will look like
     def __repr__(self):
         return f"Id : {self.id}, Name: {self.first_name}, Email: {self.last_name}, Number: {self.age}"
 
@@ -51,7 +50,6 @@ class Seller(db.Model):
     last_name = db.Column(db.String(20), unique=False, nullable=False)
     age = db.Column(db.Integer, nullable=False)
 
-    #repr method represents how one object of this datatable will look like
     def __repr__(self):
         return f"Id : {self.id}, Name: {self.first_name}, Email: {self.last_name}, Number: {self.age}"
     
@@ -63,7 +61,6 @@ class Order(db.Model):
     seller_id = db.Column(db.Integer, nullable=False)
     date_ordered = db.Column(db.String(40), unique=False, nullable=False)
 
-    #repr method represents how one object of this datatable will look like
     def __repr__(self):
         return f"Buyer ID: {self.buyer_id}, Order ID : {self.order_id}, Buyer: {self.listing_id}, Seller: {self.seller_id}, Date: {self.date_ordered}"
     
@@ -143,7 +140,7 @@ def profile():
     else:
         return redirect('/BuyerPage')
 
-#function to add sellers
+# function to add sellers
 @app.route('/add2', methods=["POST"])
 def seller():
     first_name = request.form.get("first_name2")
@@ -158,7 +155,7 @@ def seller():
     else:
         return redirect('/SellerPage')
 
-#function to add orders 
+# function to add orders 
 @app.route('/add3', methods=["POST"])
 def order():
     buyer_id = request.form.get("buyer_id")
@@ -174,7 +171,7 @@ def order():
     else:
         return redirect('/three')
     
-#function to sort through listings by ID
+# function to sort through listings by ID
 @app.route('/sort/<int:id>')
 def sort(id):
     listings = Listing.query.filter_by(seller_id = id).all()
@@ -187,7 +184,7 @@ def sort(id):
     } for listing in listings]
     return jsonify(listing_data)
 
-#function to sort through orders by buyer ID
+# function to sort through orders by buyer ID
 @app.route('/sort2/<int:id>')
 def sort2(id):
     orders = Order.query.filter_by(buyer_id = id).all()
@@ -200,10 +197,10 @@ def sort2(id):
     } for order in orders]
     return jsonify(order_data)
 
-#gets average price of orders per buyer
+# gets average price of orders per buyer
 @app.route('/average_price/<int:id>')
 def average_price(id):
-    # Fetch all orders for the given buyer ID
+    # fetch all orders for the given buyer ID
     orders = Order.query.filter_by(buyer_id=id).all()
 
     count = 0
@@ -215,13 +212,13 @@ def average_price(id):
         total = total + price
         count = count + 1
 
-    # Calculate the average price
+    # calculate the average price
     avg_price_per_listing = total / count
 
     return jsonify(avg_price_per_listing)
 
 
-#edits listing based on listing ID
+# edits listing based on listing ID
 @app.route('/edit/<int:id>')
 def edit(id):
     listings = Listing.query.filter_by(listing_id = id).all()
@@ -248,7 +245,7 @@ def save(id, max_quantity, ppu, location):
     return redirect('/four')
 
 
-#function to add listings  
+# function to add listings  
 @app.route('/add4', methods=["POST"])
 def listing():
     seller_id = request.form.get("seller_id")
@@ -282,16 +279,16 @@ def buy(id):
     new_order = Order(buyer_id = buyer_id, listing_id=id, seller_id=data.seller_id, date_ordered=datetime.now())
     db.session.add(new_order)
     db.session.commit()
-    # Deletes the data on the basis of unique id and 
+    # deletes the data on the basis of unique id and 
     # redirects to home page
     order = Order.query.all()
     return redirect('/OrderPage')
 
 
-#function to delete a row from sellers
+# function to delete a row from sellers
 @app.route('/delete2/<int:id>')
 def erase2(id):
-    # Deletes the data on the basis of unique id and 
+    # deletes the data on the basis of unique id and 
     # redirects to home page
     data = Seller.query.get(id)
     db.session.delete(data)
@@ -302,10 +299,10 @@ def erase2(id):
 def sell(id):
     return redirect('/four')
 
-#deletes an order
+# deletes an order
 @app.route('/delete_order/<int:id>')
 def erase3(id):
-    # Deletes the data on the basis of unique id and 
+    # deletes the data on the basis of unique id and 
     # redirects to home page
     data = Order.query.get(id)
     db.session.delete(data)
@@ -314,14 +311,13 @@ def erase3(id):
 
 @app.route('/delete_listing/<int:id>')
 def erase4(id):
-    # Deletes the data on the basis of unique id and 
+    # deletes the data on the basis of unique id and 
     # redirects to home page
     data = Listing.query.get(id)
     db.session.delete(data)
     db.session.commit()
     return redirect('/four')
 
-#prepared statements:
 @app.route('/api/sellers')
 def get_sellers():
     sellers = Seller.query.all()

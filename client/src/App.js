@@ -6,6 +6,7 @@ import SellPage from './SellPage';
 import ListingsPage from './ListingsPage';
 import OrderPage from './OrderPage';
 import './App.css'
+
 function App() {
   return (
     <Router>

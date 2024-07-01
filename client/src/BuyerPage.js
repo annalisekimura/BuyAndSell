@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import './Buyer.css'
+import { useNavigate } from 'react-router-dom';
+
+/* Lists all the buyers and allows you to add a new buyer */
 
 const BuyerPage = () => {
-
+    const navigate = useNavigate();
     const [buyers, setBuyers] = useState([]);
+
+    // fetches the buyers from the database
 
     useEffect(() => {
         fetch('/api/buyers')
@@ -13,9 +18,9 @@ const BuyerPage = () => {
         console.log(buyers);
     }, []);
 
-
     return (
         <div className='buyer-page'>
+          <button className='back-btn' onClick={() => navigate('/')}>Back</button>
           <h1>Buyers</h1>
           <table className='buyer-table'>
             <thead>

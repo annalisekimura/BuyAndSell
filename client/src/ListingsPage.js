@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import './Listings.css'
+import { useNavigate } from 'react-router-dom';
 
+/* Shows all the listings from the sellers that the buyers are able to buy */
 const ListingsPage = () => {
+    const navigate = useNavigate();
 
     const [listings, setListings] = useState([]);
+
+    // fetch listings from the database
 
     useEffect(() => {
         fetch('/api/listings')
@@ -13,27 +18,26 @@ const ListingsPage = () => {
     }, []);
 
     return(
-        <div className='listings-page'>
+      <div className='listings-page'>
+        <button className='back-btn' onClick={() => navigate('/BuyerPage')}>Back</button>
         <head>
-      <title>View Listings</title>
-   </head>
-   <body>
-      <h3>Listings</h3>
-      <br></br>
-      <table>
-         <thead>
-            <th>Listing Id</th>
-            <th>Seller Id</th>
-            <th>Max Quantity</th>
-            <th>Price Per Unit</th>
-            <th>Location</th>
-            <th>Buyer ID</th>
-            <th>#</th>
-            
-         </thead>
-         <tbody>
+          <title>View Listings</title>
+        </head>
+        <body>
+          <h3>Listings</h3>
+          <br></br>
+          <table className='listHead'>
+            <thead>
+                <th>Listing Id</th>
+                <th>Seller Id</th>
+                <th>Max Quantity</th>
+                <th>Price Per Unit</th>
+                <th>Location</th>
+                <th>Buyer ID</th>
+            </thead>
+            <tbody>
                 {listings.map(listing => (
-                        <tr key={listing.listing_id}>
+                    <tr key={listing.listing_id}>
                         <td>{listing.listing_id}</td>
                         <td>{listing.seller_id}</td>
                         <td>{listing.max_quantity}</td>
@@ -45,15 +49,12 @@ const ListingsPage = () => {
                               <button type="submit">Buy</button>
                           </form>
                         </td>
-                        </tr>
-                    ))}
-                </tbody>
-      </table>
-
-   </body>
-   </div>
-
-
+                    </tr>
+                ))}
+            </tbody>
+          </table>
+        </body>
+      </div>
     )
 }
 
